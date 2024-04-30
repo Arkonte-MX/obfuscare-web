@@ -18,4 +18,10 @@ export default {
     },
 
     plugins: [forms],
+
+    purge: [
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+      ],
 };
