@@ -1,0 +1,3 @@
+<a class="text-center py-2 px-4 ml-4 w-full rounded-lg text-sm text-slate-50 border border-slate-50 bg-zinc-800 bg-opacity-25 hover:cursor-pointer hover:bg-gradient-to-br from-yellow-200 to-amber-400 hover:text-slate-700" @click="texto = window.UtileriasOfuscador.limpiarCampo($refs.campo, $refs.contador, {{ $minimocaracteres ?? 0 }}, {{ $maximopalabras ?? 0 }}, {{ $maximocaracteres ?? 0 }})">
+    <span>Limpiar</span>
+</a>

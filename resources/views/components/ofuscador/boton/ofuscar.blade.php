@@ -1,0 +1,3 @@
+<button class="py-2 px-4 ml-4 w-full rounded-lg text-sm text-slate-50 border border-slate-50 bg-zinc-800 bg-opacity-25 disabled:text-slate-500 disabled:cursor-not-allowed hover:bg-gradient-to-br from-emerald-400 to-teal-600 hover:text-slate-100" type="submit" :disabled="!window.UtileriasOfuscador.habilitarSubmit(texto, {{ $minimocaracteres ?? 0 }})">
+    <span>{{ $etiqueta ?? 'Ofuscar' }}</span>
+</button>

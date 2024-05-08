@@ -19,9 +19,15 @@ export default {
 
     plugins: [forms],
 
-    purge: [
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue',
-      ],
+    safelist: [
+        {
+          pattern: /text-(fuchsia|red|lime|sky|slate)-(50|200|300|400|500|600|700|800|950)/,
+        }
+    ],
+
+    variants: {
+        extend: {
+            backgroundColor: ['disabled'],
+        },
+    }
 };

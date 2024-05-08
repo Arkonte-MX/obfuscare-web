@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alternativa;
+use App\Models\Severidad;
+use App\Models\Ofuscable;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Jonathan Muñoz Lucas',
+            'email' => 'admin@obfuscare.com.mx',
+        ]);
+
+        Severidad::insert([
+            ['id' => 1, 'nombre' => 'Neutro'],
+            ['id' => 2, 'nombre' => 'Sospechoso'],
+            ['id' => 3, 'nombre' => 'Riesgoso'],
+            ['id' => 4, 'nombre' => 'Prohibido'],
         ]);
     }
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clasificacion', function (Blueprint $table) {
+        Schema::create('severidad', function (Blueprint $table) {
             $table->tinyInteger('id')->primary();
             $table->string('nombre', 16)->unique();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clasificacion');
+        Schema::dropIfExists('severidad');
     }
 };

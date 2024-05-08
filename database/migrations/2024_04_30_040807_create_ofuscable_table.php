@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('ofuscable', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('valor', 64)->unique();
-            $table->tinyInteger('clasificacion')->nullable();
+            $table->tinyInteger('id_severidad')->nullable();
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedInteger('id_alternativa')->nullable();
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('clasificacion')->references('id')->on('clasificacion');
+            $table->foreign('id_severidad')->references('id')->on('severidad');
             $table->foreign('id_alternativa')->references('id')->on('alternativa');
+
+            $table->index(['valor', 'id_alternativa', 'id_severidad', 'id_usuario']);
         });
     }
 
