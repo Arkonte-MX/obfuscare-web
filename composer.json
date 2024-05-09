@@ -1,8 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "arkonte.mx/obfuscare",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Herramienta para el análisis y adaptación de texto, diseñada para procurar una comunicación digital segura y efectiva. Ideal para creadores de contenido, educadores y profesionales de marketing.",
+    "keywords": ["obfuscare", "analisis", "adaptación", "texto", "comunicación", "digital", "creadores", "contenido", "educadores", "marketing"],
+    "authors": [
+        {
+            "name": "Jonathan Muñoz Lucas",
+            "email": "arkonte.mx@outlook.com"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",
