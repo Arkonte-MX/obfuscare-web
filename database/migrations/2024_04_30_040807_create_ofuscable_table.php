@@ -23,7 +23,10 @@ return new class extends Migration
             $table->foreign('id_severidad')->references('id')->on('severidad');
             $table->foreign('id_alternativa')->references('id')->on('alternativa');
 
-            $table->index(['valor', 'id_alternativa', 'id_severidad', 'id_usuario']);
+            $table->index(
+                ['valor', 'id_alternativa', 'id_severidad', 'id_usuario'],
+                'indice_ofuscable'
+            );
         });
     }
 

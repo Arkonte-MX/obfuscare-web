@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Ofuscable;
-use App\Models\User;
 use App\Traits\HasOfuscador;
 use App\Traits\HasPermisos;
 use Illuminate\Http\JsonResponse;
@@ -36,7 +36,7 @@ class OfuscamientoController extends Controller
         $procesadas = $peticion->session()->get("procesadas");
 
         if (!$procesadas || count($procesadas) < 1) {
-            return redirect()->route("bienvenida.inicio");
+            return redirect()->route("inicio");
         }
 
         $permisos_usuario = $this->obtenerPermisosUsuario($peticion);
@@ -53,7 +53,14 @@ class OfuscamientoController extends Controller
         $id_usuario = auth()->user()->id;
 
         $faltantes = array_map(function ($faltante) use ($id_usuario) {
-            return ["valor" => $faltante, "id_alternativa" => null, "id_severidad" => null, "id_usuario" => $id_usuario];
+            return [
+                "valor" => $faltante,
+                "id_alternativa" => null,
+                "id_severidad" => null,
+                "id_usuario" => $id_usuario,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
+            ];
         }, $peticion->input('faltantes'));
 
         Ofuscable::insertOrIgnore($faltantes);

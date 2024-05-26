@@ -119,9 +119,9 @@ trait HasOfuscador
     private static function ofuscarPalabra(string $palabra, int $severidad, string | null $alternativa): string
     {
         return match ($severidad) { // DEBE COINCIDIR CON resources/assets/js/presentar/utilerias.js => obtenerColorSeveridad
-            4 => self::ofuscarProhibido($palabra, $alternativa),
-            3 => self::ofuscarRiesgoso($palabra, $alternativa),
-            2 => self::ofuscarSospechoso($palabra, $alternativa),
+            3 => self::ofuscarProhibido($palabra, $alternativa),
+            2 => self::ofuscarRiesgoso($palabra, $alternativa),
+            1 => self::ofuscarSospechoso($palabra, $alternativa),
             default => self::noOfuscar($palabra)
         };
     }
@@ -219,8 +219,8 @@ trait HasOfuscador
             return preg_quote($objetivo, '/');
         }, self::VOCALES));
 
-        return preg_replace_callback("/{$objetivos}/", function ($matches) use ($sustitutos) {
-            return $sustitutos[$matches[0]][array_rand($sustitutos[$matches[0]])];
+        return preg_replace_callback("/{$objetivos}/", function ($coincidencia) use ($sustitutos) {
+            return $sustitutos[$coincidencia[0]][array_rand($sustitutos[$coincidencia[0]])];
         }, $palabra);
     }
 }

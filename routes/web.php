@@ -6,14 +6,14 @@ use App\Http\Controllers\OfuscamientoController;
 use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', [BienvenidaController::class, 'iniciar'])
-    ->name('bienvenida.inicio');
+Route::get('/', [BienvenidaController::class, 'mostrarInicio'])
+    ->name('inicio');
 
-Route::get('/informacion', [BienvenidaController::class, 'informar'])
-    ->name('bienvenida.informacion');
+Route::get('/informacion', [BienvenidaController::class, 'mostrarInformacion'])
+    ->name('informacion');
 
-Route::get('/autenticacion/autenticar', [AutenticacionController::class, 'autenticar'])
-    ->name('autenticacion.autenticar');
+Route::get('/acerca', [BienvenidaController::class, 'mostrarAcerca'])
+    ->name('acerca');
 
 Route::post('/ofuscar', [OfuscamientoController::class, 'ofuscar'])
     ->name('ofuscamiento.ofuscar');
@@ -23,6 +23,9 @@ Route::get('/presentar', [OfuscamientoController::class, 'presentar'])
 
 Route::post('/notificar_palabras_faltantes', [OfuscamientoController::class, 'notificar'])
     ->name('ofuscamiento.notificar.faltantes');
+
+Route::get('/autenticacion/autenticar', [AutenticacionController::class, 'autenticar'])
+    ->name('autenticacion.autenticar');
 
 Route::get('/autenticacion/solicitar', [AutenticacionController::class, 'solicitar'])
     ->name('autenticacion.solicitar');

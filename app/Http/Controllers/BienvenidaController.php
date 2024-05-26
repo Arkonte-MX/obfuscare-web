@@ -10,14 +10,19 @@ class BienvenidaController extends Controller
 {
     use HasPermisos;
 
-    public function iniciar(Request $peticion): View
+    public function mostrarInicio(Request $peticion): View
     {
         $permisos_usuario = $this->obtenerPermisosUsuario($peticion);
-        return view('bienvenida')->with($permisos_usuario);
+        return view('inicio')->with($permisos_usuario);
     }
 
-    public function informar(): View
+    public function mostrarInformacion(): View
     {
         return view('informacion');
+    }
+
+    public function mostrarAcerca(): View
+    {
+        return view('acerca');
     }
 }

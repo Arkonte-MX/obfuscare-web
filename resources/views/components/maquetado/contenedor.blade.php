@@ -14,7 +14,7 @@
     <div class="flex flex-row">
         <div class="w-1/6">
         </div>
-        <div class="flex flex-col flex-grow items-center justify-center px-4 pt-24">
+        <div id="contenido" class="flex flex-col flex-grow items-center justify-center px-4">
             {{ $contenido }}
         </div>
         <div class="w-1/6">

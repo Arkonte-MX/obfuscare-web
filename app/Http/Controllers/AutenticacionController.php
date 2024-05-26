@@ -37,7 +37,7 @@ class AutenticacionController extends Controller
             }
         }
 
-        return redirect()->route('bienvenida.inicio');
+        return redirect()->route('inicio');
     }
 
     public function salir(): RedirectResponse
@@ -49,6 +49,6 @@ class AutenticacionController extends Controller
             Auth::guard('web')->logout();
         }
 
-        return redirect()->route('bienvenida.inicio');
+        return redirect()->route('inicio');
     }
 }

@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Severidad::insert([
-            ['id' => 1, 'nombre' => 'Neutro'],
-            ['id' => 2, 'nombre' => 'Sospechoso'],
-            ['id' => 3, 'nombre' => 'Riesgoso'],
-            ['id' => 4, 'nombre' => 'Prohibido'],
+            ['id' => 0, 'nombre' => 'Neutro'],
+            ['id' => 1, 'nombre' => 'Sospechoso'],
+            ['id' => 2, 'nombre' => 'Riesgoso'],
+            ['id' => 3, 'nombre' => 'Prohibido'],
         ]);
     }
 }

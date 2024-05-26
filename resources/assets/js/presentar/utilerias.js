@@ -1,17 +1,16 @@
 export const obtenerColorSeveridad = (severidad = null) => {
     switch(severidad) { // DEBE COINCIDIR CON app/Traits/HasOfuscador.php -> ofuscarPalabra
-        case 4: return 'text-red-400';
-        case 3: return 'text-fuchsia-400';
-        case 2: return 'text-lime-400';
-        case 1: return 'text-slate-50'
+        case 3: return 'text-red-400';
+        case 2: return 'text-fuchsia-400';
+        case 1: return 'text-lime-400';
         default: return 'text-slate-300';
     }
 }
 
-export const copiarTextoPortapapeles = (contenedor_texto_procesadas = null) => {
+export const copiarTextoPortapapeles = (contenedor_palabras_procesadas = null) => {
     try {
 
-        const fragmentos = contenedor_texto_procesadas.querySelectorAll('span');
+        const fragmentos = contenedor_palabras_procesadas.querySelectorAll('span');
 
         let texto = "";
         fragmentos.forEach((fragmento) => {
@@ -46,4 +45,21 @@ export const notificarPalabrasFaltantes = (palabras_faltantes = []) => {
     .catch(function (error) {
         console.error(error);
     });
+}
+
+export const definirEventoCopiar = (boton_copiar, contenedor_palabras_procesadas) => {
+    boton_copiar.onclick = function() {
+        copiarTextoPortapapeles(contenedor_palabras_procesadas);
+        animarElementoConPing(boton_copiar);
+    }
+}
+
+const animarElementoConPing = (elemento) => {
+    elemento.classList.add('animate-ping');
+
+    console.log('animarElementoConPing', elemento);
+
+    setTimeout(() => {
+        elemento.classList.remove('animate-ping');
+    }, 600);
 }

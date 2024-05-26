@@ -8,24 +8,24 @@ $faltantes = [];
 
 <x-maquetado.contenedor>
     <x-slot name="contenido">
-        <div id="resultado" class="flex flex-col">
+        <div id="resultado" class="flex flex-col pt-48">
 
-            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row text-justify w-full items-center justify-center">
+            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row w-full items-center justify-center shadow-2xl shadow-zinc-700" x-init="window.UtileriasPresentar.definirEventoCopiar($refs.copiar, $refs.procesadas)">
                 @if(!!$palabras && count($procesadas) > 0)
 
-                <div x-ref="palabras" class="p-6 grow overflow-y-auto font-light bg-zinc-800 rounded-l-lg" @scroll="desplazamiento = $refs.palabras.scrollTop; $refs.procesadas.scrollTop = desplazamiento">
-                    <h4 class="text-zinc-100 text-3xl">Texto original</h4>
+                <div x-ref="palabras" class="p-8 grow overflow-y-auto font-normal bg-zinc-800 rounded-l-lg" @scroll="desplazamiento = $refs.palabras.scrollTop; $refs.procesadas.scrollTop = desplazamiento">
+                    <h4 class="text-zinc-100 font-light text-3xl">Texto original</h4>
                     <p class="px-1 py-2 text-zinc-400 text-lg">
                         @foreach($palabras as $indice => $palabra)
-                        <span :class="{ [color]: indice === {{ $indice }}, 'font-bold text-xl': indice === {{ $indice }} }">
+                        <span :class="{ [color]: indice === {{ $indice }}, 'font-medium text-xl': indice === {{ $indice }} }">
                             {{ $palabra }}
                         </span>
                         @endforeach
                     </p>
                 </div>
-                <div x-ref="procesadas" class="p-6 grow overflow-y-auto bg-gradient-to-br from-rose-700 via-violet-800 to-purple-950 rounded-r-lg" @scroll="desplazamiento = $refs.procesadas.scrollTop; $refs.palabras.scrollTop = desplazamiento">
-                    <div class="relative hover:cursor-pointer" @click="window.UtileriasPresentar.copiarTextoPortapapeles($refs.procesadas)">
-                        <x-uni-copy-o class="absolute top-1 right-0 w-6 text-zinc-200 hover:text-yellow-300" />
+                <div x-ref="procesadas" class="p-8 grow overflow-y-auto bg-gradient-to-br from-rose-700 via-violet-800 to-purple-950 rounded-r-lg" @scroll="desplazamiento = $refs.procesadas.scrollTop; $refs.palabras.scrollTop = desplazamiento">
+                    <div class="relative hover:cursor-pointer">
+                        <x-uni-copy-o x-ref="copiar" class="absolute top-1 right-0 w-6 text-zinc-200 hover:text-yellow-300" />
                     </div>
                     <h4 class="text-zinc-50 font-light text-3xl">Texto analizado</h4>
                     <p class="px-1 py-2 text-zinc-100 text-lg font-normal">
@@ -33,11 +33,11 @@ $faltantes = [];
                         <span x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null">
                             @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
 
-                            {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "<u>{$procesada['ofuscada']}</u>" !!}
+                            {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
 
                             @else
 
-                            <i class="text-zinc-300">{{ $procesada['original'] }}</i>
+                            <span class="text-zinc-300">{{ $procesada['original'] }}</span>
 
                             @php
                             if($procesada['ofuscada'] === null) {
@@ -66,7 +66,7 @@ $faltantes = [];
                 <div class="flex flex-col space-y-4 text-zinc-100">
                     <p>¡Hola!</p>
                     <p>
-                        Queremos informarte que de las palabras en este texto, <strong><u> hemos modificado {{ $cantidad_palabras - ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes) }}</u></strong>.
+                        Queremos informarte que de las palabras en este texto, <strong><u> hemos analizado {{ $cantidad_palabras - ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes) }}</u></strong>.
                         @if($cantidad_palabras_ignoradas > 0 || $cantidad_palabras_faltantes > 0)
                         Lamentablemente <strong><u>{{ $cantidad_palabras_ignoradas + $cantidad_palabras_faltantes }} {{ ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes > 1) ? 'palabras no pudieron ser procesadas' : 'palabra no pudo ser procesada' }}</u></strong>
 

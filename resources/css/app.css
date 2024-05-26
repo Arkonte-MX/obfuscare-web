@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#contenido {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+#contenido::-ms-overflow-style {
+  display: none;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+        z-index: -1;
+    }
+
+    to {
+        transform: rotate(360deg);
+        z-index: -1;
+    }
+}
+
+@keyframes aparecer-abajo-arriba {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
