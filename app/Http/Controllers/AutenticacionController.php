@@ -16,8 +16,17 @@ class AutenticacionController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function autenticar(): RedirectResponse
+    public function autenticar(Request $peticion): RedirectResponse
     {
+        // https://es.stackoverflow.com/questions/398913/problema-con-socialite-google-en-laravel-7
+        if (!$peticion->query->all()) {
+            $parametros = [];
+            parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $parametros);
+            foreach ($parametros as $key => $value) {
+                $peticion->query->set($key, $value);
+            }
+        }
+
         $proveedor = Socialite::driver('google');
         $cuenta = $proveedor->user();
 
