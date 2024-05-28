@@ -12,7 +12,7 @@
                     </button>
                     <div class="pt-4 pl-6 space-y-3 accordion-content" :class="{ [mostrar]: indice !== 1  }">
                         <p>
-                            Obfuscare es una aplicación web desarrollada con tecnologías como Laravel (PHP8 + Blade + Alpine.js + Tailwind CSS) y MySQL. Esta herramienta está diseñada para analizar textos y detectar palabras que podrían generar problemas en redes sociales y plataformas de contenido digital.
+                            Obfuscare es una aplicación web desarrollada con tecnologías como Laravel (PHP8 + Blade + Alpine.js + Tailwind CSS + Vite) y MySQL. Esta herramienta está diseñada para analizar textos y detectar palabras que podrían generar problemas en redes sociales y plataformas de contenido digital.
                             Funciona clasificando las palabras según su nivel de riesgo y aplicando técnicas de ofuscación pertinentes.
                             El objetivo es brindar al usuario una idea clara sobre la probabilidad de que su contenido —ya sea un mensaje de texto, comentario, publicación, guión o correo electrónico— pueda ser objeto de cancelación, censura o desmonetización por el uso de ciertas palabras.
                         </p>
@@ -45,7 +45,7 @@
                     <div class="pt-4 pl-6 space-y-3 accordion-content" :class="{ [mostrar]: indice !== 3  }">
                         <p>
                             Aunque las soluciones de cómputo en la nube brindan una mayor capacidad de procesamiento y almacenamiento, el costo asociado es considerablemente más alto.
-                            Hemos optado por alojar Obfuscare en un servicio de hosting web estándar, y optimizar el código para para mantener los costos operativos dentro de nuestro presupuesto.
+                            Hemos optado por alojar Obfuscare en un servicio de hosting web estándar, y optimizar el código para mantener los costos operativos dentro de nuestro presupuesto.
                         </p>
                         <p>
                             Te invitamos a registrar una cuenta con nosotros. Los usuarios registrados disfrutan de límites más amplios tanto en la cantidad de palabras como en el total de caracteres que pueden analizar.
@@ -95,7 +95,7 @@
                         <p class="pt-6">
                             Si la aplicación te ha sido útil y deseas apoyar su desarrollo. En casa agradeceremos enormemente cualquier donación que puedas realizar a través de
                             <a href="http://link.mercadopago.com.mx/obfuscare" target="_blank">
-                                <u>MercadoPago</u>
+                                <u>MercadoPago</u>.
                             </a>
                         </p>
                         <div>

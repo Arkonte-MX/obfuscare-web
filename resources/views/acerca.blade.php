@@ -12,7 +12,7 @@ $experiencia = ceil((Carbon::now())->diffInYears(Carbon::createFromDate(2016, 11
                     <p>Jonathan Muñoz Lucas</p>
                 </h1>
 
-                <div class="flex mt-4 w-1/3 rounded-full p-3 bg-gradient-to-br from-rose-700 via-violet-800 to-purple-950" style="z-index: -1">
+                <div class="flex mt-4 rounded-full p-3 bg-gradient-to-br from-rose-700 via-violet-800 to-purple-950" style="z-index: -1">
                     <img src="{{ asset('/multimedia/imagen/fotografia/jonathan.jpg') }}" class="rounded-full" />
                 </div>
 
