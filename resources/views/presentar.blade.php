@@ -25,35 +25,35 @@ $faltantes = [];
                 </div>
                 <div x-ref="procesadas" class="p-8 grow overflow-y-auto bg-gradient-to-br from-rose-700 via-violet-800 to-purple-950 rounded-r-lg" @scroll="desplazamiento = $refs.procesadas.scrollTop; $refs.palabras.scrollTop = desplazamiento">
                     <div class="relative hover:cursor-pointer">
-                        <x-uni-copy-o x-ref="copiar" class="absolute top-1 right-0 w-6 text-zinc-200 hover:text-yellow-300" />
+                        <img x-ref="copiar" class="absolute top-1 right-0 w-6" src="{{ asset('/multimedia/imagen/iconos/copy-svgrepo-com.png') }}" />
                     </div>
                     <h4 class="text-zinc-50 font-light text-3xl">Texto analizado</h4>
                     <p class="px-1 py-2 text-zinc-100 text-lg font-normal">
                         @foreach($procesadas as $indice => $procesada)
-                        <span x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null">
-                            @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
+                    <div x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null">
+                        @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
 
-                            {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
+                        {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
 
-                            @else
+                        @else
 
-                            <span class="text-zinc-300">{{ $procesada['original'] }}</span>
+                        <span class="text-zinc-300">{{ $procesada['original'] }}</span>
 
-                            @php
-                            if($procesada['ofuscada'] === null) {
-                            ++$cantidad_palabras_ignoradas;
-                            } else if ($procesada['ofuscada'] === "") {
-                            ++$cantidad_palabras_faltantes;
-                            }
+                        @php
+                        if($procesada['ofuscada'] === null) {
+                        ++$cantidad_palabras_ignoradas;
+                        } else if ($procesada['ofuscada'] === "") {
+                        ++$cantidad_palabras_faltantes;
+                        }
 
-                            if($autenticado) {
-                            $faltantes[] = $procesada['original'];
-                            }
-                            @endphp
+                        if($autenticado) {
+                        $faltantes[] = $procesada['original'];
+                        }
+                        @endphp
 
-                            @endif
-                        </span>
-                        @endforeach
+                        @endif
+                    </div>
+                    @endforeach
                     </p>
                 </div>
 
