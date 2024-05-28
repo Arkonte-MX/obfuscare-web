@@ -23,8 +23,8 @@ trait HasOfuscador
 
         for ($indice = 0; $indice < $cantidad_palabras; $indice++) {
 
-            $original = self::sanearPalabra($palabras[$indice]);
-            $ofuscable = self::convertirEnMinusculas($original);
+            $original = $palabras[$indice];
+            $ofuscable = self::sanearPalabra($palabras[$indice]);
 
             $palabras[$indice] = [
                 "original" => $original,
@@ -85,12 +85,7 @@ trait HasOfuscador
 
     private static function sanearPalabra(string $palabra): string
     {
-        return preg_replace('/[^a-zA-Z0-9áéíóúÁÉÍÓÚ\s]/', '', trim($palabra));
-    }
-
-    private static function convertirEnMinusculas(string $palabra): string
-    {
-        return mb_strtolower($palabra, 'UTF-8');
+        return strtolower(preg_replace('/[^a-zA-Z\s]/', '', iconv('UTF-8', 'ASCII//TRANSLIT', trim($palabra))));
     }
 
     private static function distribuirPalabrasOfuscadas(array $palabras): array
