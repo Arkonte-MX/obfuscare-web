@@ -30,30 +30,30 @@ $faltantes = [];
                     <h4 class="text-zinc-50 font-light text-3xl">Texto analizado</h4>
                     <p class="px-1 py-2 text-zinc-100 text-lg font-normal">
                         @foreach($procesadas as $indice => $procesada)
-                    <div x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null">
-                        @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
+                        <span x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null" class="text-zinc-300">
+                            @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
 
-                        {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
+                            {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
 
-                        @else
+                            @else
 
-                        <span class="text-zinc-300">{{ $procesada['original'] }}</span>
+                            {{ $procesada['original'] }}
 
-                        @php
-                        if($procesada['ofuscada'] === null) {
-                        ++$cantidad_palabras_ignoradas;
-                        } else if ($procesada['ofuscada'] === "") {
-                        ++$cantidad_palabras_faltantes;
-                        }
+                            @php
+                            if($procesada['ofuscada'] === null) {
+                            ++$cantidad_palabras_ignoradas;
+                            } else if ($procesada['ofuscada'] === "") {
+                            ++$cantidad_palabras_faltantes;
+                            }
 
-                        if($autenticado) {
-                        $faltantes[] = $procesada['original'];
-                        }
-                        @endphp
+                            if($autenticado) {
+                            $faltantes[] = $procesada['original'];
+                            }
+                            @endphp
 
-                        @endif
-                    </div>
-                    @endforeach
+                            @endif
+                        </span>
+                        @endforeach
                     </p>
                 </div>
 
