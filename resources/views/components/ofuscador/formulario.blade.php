@@ -1,4 +1,4 @@
-<form class="flex flex-col flex-grow p-8" action="{{ route('ofuscamiento.ofuscar') }}" method="POST" x-data="{ texto: '' }" x-init="texto = window.UtileriasOfuscador.obtenerValorAlmacenado(); window.UtileriasOfuscador.mostrarCuentaPalabras($refs.contador, '', {{$minimocaracteres}}, {{$maximopalabras}}, {{$maximocaracteres}})">
+<form class="flex flex-col flex-grow p-8" action="{{ route('ofuscamiento.ofuscar') }}" method="POST" x-data="{ texto: '' }" x-init="texto = window.UtileriasOfuscador.obtenerValorAlmacenado(); $nextTick(() => { window.UtileriasOfuscador.mostrarCuentaPalabras($refs.contador, '', {{$minimocaracteres}}, {{$maximopalabras}}, {{$maximocaracteres}}) })">
     @csrf
     <div class="flex grow">
         <div class="flex flex-col grow">

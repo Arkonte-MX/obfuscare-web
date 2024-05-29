@@ -57,9 +57,6 @@ export const definirEventoCopiar = (boton_copiar, contenedor_palabras_procesadas
 
 const animarElementoConPing = (elemento) => {
     elemento.classList.add('animate-ping');
-
-    console.log('animarElementoConPing', elemento);
-
     setTimeout(() => {
         elemento.classList.remove('animate-ping');
     }, 600);

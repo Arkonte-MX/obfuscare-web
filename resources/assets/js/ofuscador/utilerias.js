@@ -31,7 +31,10 @@ export const mostrarCuentaPalabras = (contador, texto = "", minimo_caracteres = 
     let no_todo_texto_se_procesara = ". ";
 
     if(texto.trim() === "") {
-        texto = localStorage.getItem(LOCAL_STORAGE.CAMPO);
+        const almacenado = localStorage.getItem(LOCAL_STORAGE.CAMPO);
+        texto = (!!almacenado)
+            ? almacenado
+            : "";
     }
 
     if (texto.trim() !== "") {

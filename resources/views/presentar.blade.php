@@ -10,7 +10,7 @@ $faltantes = [];
     <x-slot name="contenido">
         <div id="resultado" class="flex flex-col pt-48">
 
-            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row w-full items-center justify-center shadow-xl shadow-zinc-700" x-init="window.UtileriasPresentar.definirEventoCopiar($refs.copiar, $refs.procesadas)">
+            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row w-full items-center justify-center shadow-xl shadow-zinc-700" x-init="$nextTick(() => { window.UtileriasPresentar.definirEventoCopiar($refs.copiar, $refs.procesadas) })">
                 @if(!!$palabras && count($procesadas) > 0)
 
                 <div x-ref="palabras" class="p-8 grow overflow-y-auto font-normal bg-zinc-800 rounded-l-lg" @scroll="desplazamiento = $refs.palabras.scrollTop; $refs.procesadas.scrollTop = desplazamiento">
