@@ -1,9 +1,10 @@
 export const obtenerColorSeveridad = (severidad = null) => {
     switch(severidad) { // DEBE COINCIDIR CON app/Traits/HasOfuscador.php -> ofuscarPalabra
-        case 3: return 'text-red-400';
-        case 2: return 'text-fuchsia-400';
-        case 1: return 'text-lime-400';
-        default: return 'text-slate-300';
+        case 3: return 'text-red-600';
+        case 2: return 'text-orange-400';
+        case 1: return 'text-yellow-400';
+        case 0: return 'text-zinc-100';
+        default: return 'text-zinc-400';
     }
 }
 

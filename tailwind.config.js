@@ -21,7 +21,7 @@ export default {
 
     safelist: [
         {
-            pattern: /text-(fuchsia|red|lime|sky|slate)-(50|200|300|400|500|600|700|800|950)/,
+            pattern: /text-(fuchsia|red|orange|yellow|sky|slate)-(50|200|300|400|500|600|700|800|950)/,
         },
         {
             pattern: /animate-ping/,

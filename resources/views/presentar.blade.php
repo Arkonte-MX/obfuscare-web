@@ -10,7 +10,7 @@ $faltantes = [];
     <x-slot name="contenido">
         <div id="resultado" class="flex flex-col pt-48">
 
-            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row w-full items-center justify-center shadow-2xl shadow-zinc-700" x-init="window.UtileriasPresentar.definirEventoCopiar($refs.copiar, $refs.procesadas)">
+            <div x-data="{ indice: null, color: null, peso: null, desplazamiento: 0 }" class="flex flex-row w-full items-center justify-center shadow-xl shadow-zinc-700" x-init="window.UtileriasPresentar.definirEventoCopiar($refs.copiar, $refs.procesadas)">
                 @if(!!$palabras && count($procesadas) > 0)
 
                 <div x-ref="palabras" class="p-8 grow overflow-y-auto font-normal bg-zinc-800 rounded-l-lg" @scroll="desplazamiento = $refs.palabras.scrollTop; $refs.procesadas.scrollTop = desplazamiento">
@@ -33,11 +33,11 @@ $faltantes = [];
                         <span x-on:mouseover="indice = {{ $indice }}; color = window.UtileriasPresentar.obtenerColorSeveridad({{ $procesada['severidad'] }}); peso = 'font-bold'" x-on:mouseout="indice = null; peso = null" class="text-zinc-300">
                             @if($procesada['ofuscada'] && $procesada['ofuscada'] !== "")
 
-                            {!! ((int) $procesada['severidad'] > 0) ? "<strong><u>{$procesada['ofuscada']}</u></strong>" : "{$procesada['ofuscada']}" !!}
+                            {!! ((int) $procesada['severidad'] > 0) ? "<strong>{$procesada['ofuscada']}</strong>" : "{$procesada['ofuscada']}" !!}
 
                             @else
 
-                            {{ $procesada['original'] }}
+                            <u>{{ $procesada['original'] }}</u>
 
                             @php
                             if($procesada['ofuscada'] === null) {
@@ -68,11 +68,14 @@ $faltantes = [];
                     <p>
                         Queremos informarte que de las palabras en este texto, <strong><u> hemos analizado {{ $cantidad_palabras - ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes) }}</u></strong>.
                         @if($cantidad_palabras_ignoradas > 0 || $cantidad_palabras_faltantes > 0)
-                        Lamentablemente <strong><u>{{ $cantidad_palabras_ignoradas + $cantidad_palabras_faltantes }} {{ ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes > 1) ? 'palabras no pudieron ser procesadas' : 'palabra no pudo ser procesada' }}</u></strong>
+                        Lamentablemente {{ $cantidad_palabras_ignoradas + $cantidad_palabras_faltantes }} {{ ($cantidad_palabras_ignoradas + $cantidad_palabras_faltantes > 1) ? 'palabras (las subrayadas) no pudieron ser procesadas' : 'palabra (la subrayada) no pudo ser procesada' }}
+
+                        @if($cantidad_palabras_faltantes > 0)
+                        (no se {{ ($cantidad_palabras_faltantes < 2 ) ? 'encuentra' : 'encuentran' }} en nuestra base de datos</span>).
+                        @endif
 
                         @auth
                         @if($cantidad_palabras_faltantes > 0)
-                        (<span>{{ $cantidad_palabras_faltantes }} no se {{ ($cantidad_palabras_faltantes < 2 ) ? 'encuentra' : 'encuentran' }} en nuestra base de datos</span>).
                         <span x-data="{}" class="hover:cursor-pointer"><u @click="window.UtileriasPresentar.notificarPalabrasFaltantes({{ json_encode($faltantes) }})">Haz click aquí</u> para notificar las palabras que no fueron encontradas.</span>
                         @endif
                         @endauth
