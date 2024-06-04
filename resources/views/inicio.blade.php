@@ -8,7 +8,7 @@
                         Tu asistente para la comunicación en línea
                     </h1>
                     <span class="font-light text-zinc-100 text-xl">
-                        <strong>Obfuscare</strong> es una aplicación web especializada en el análisis de contenido textual, abarcando desde comentarios y publicaciones hasta guiones para videos. Nos enfocamos en preservar la estructura original de tus palabras, mientras minimizamos el riesgo de desmonetización o censura en plataformas online, mediante la identificación y modificación sugerida de palabras clave.
+                        <strong>Obfuscare</strong> es una herramienta diseñada para creadores de contenido digital y entusiastas de las redes sociales. Su objetivo es ayudar a quienes desean saber si su contenido en texto —ya sean comentarios, publicaciones, o guiones para videos— podría estar en riesgo de ser objeto de censura o desmonetización debido a las palabras utilizadas, especialmente si se abordan temas delicados. Nuestra aplicación analiza el texto ingresado e identifica y propone diversas modificaciones a palabras clave.
                     </span>
                 </div>
 
